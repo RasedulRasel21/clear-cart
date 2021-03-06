@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="http://www.jqueryscript.net/css/jquerysctipttop.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" type="text/css" href="jquery-picZoomer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: sans-serif;
+        background: #e4e4e4;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      ul li {
+        list-style: none;
+      }
+      .add-to-cart-section {
+        display: grid;
+        grid-template-columns: 3fr 1.5fr;
+      }
+      .cart-left {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+      }
+      .cart-left-all-image {
+        display: block;
+        padding: 200px 90px 0 90px;
+      }
+      .cart-left-all-image img {
+        margin-top: 10px;
+      }
+      .cart-right-selected-img {
+        padding: 200px 200px 0 200px;
+      }
+      .cart-right-selected-img p {
+        text-align: center;
+        color: rgb(109 111 111);
+        margin-top: 20px;
+      }
+      .cart-right {
+        background: #fff;
+        padding: 50px 50px 0 50px;
+        margin-right: 60px;
+      }
+      h6 {
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .extraordinary {
+        text-align: center;
+        border-top: 1px solid rgb(165 173 173);
+        border-bottom: 1px solid rgb(165 173 173);
+        padding: 10px;
+      }
+      .product-name {
+        padding: 22px 0;
+      }
+      .product-details {
+        color: rgb(93 95 95);
+        line-height: 28px;
+      }
+      .product-price {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 20px 0;
+        border-bottom: 1px solid rgb(165 173 173);
+        padding-bottom: 20px;
+      }
+      .product-price p {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .product-price p span {
+        margin-right: 5px;
+      }
+      .product-review {
+        text-align: right;
+      }
+      .mark-icon {
+        width: 12px;
+        margin-right: 5px;
+      }
+      .product-quality {
+        line-height: 36px;
+        border-bottom: 1px solid rgb(165 173 173);
+        padding-bottom: 30px;
+      }
+      .product-quality h6 {
+        letter-spacing: 1px;
+      }
+      .cart-btn {
+        margin: 50px 0;
+      }
+      .cart-btn span {
+        padding: 19px 24px;
+        border: 1px solid rgb(165 173 173);
+        font-weight: 600;
+        margin-right: 10px;
+      }
+      .btn {
+        background: #f05a3c;
+        color: #fff;
+        padding: 20px 106px;
+        font-weight: 600;
+      }
+      .arrives {
+        font-weight: 600;
+      }
+      .live-chat {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid rgb(165 173 173);
+        margin-top: 85px;
+      }
+      .live-chat a {
+        padding: 20px 40px;
+        color: rgb(56 58 58);
+      }
+      .chat-btn {
+        border-right: 1px solid rgb(165 173 173);
+      }
+      .specification-img {
+        width: 10px;
+      }
+      @media only screen and (max-width: 1700px) {
+        .add-to-cart-section {
+          grid-template-columns: 2fr 1.5fr;
+        }
+        .cart-left-all-image {
+          padding: 50px 70px;
+        }
+        .cart-right-selected-img {
+          padding: 100px;
+        }
+        .btn {
+          padding: 20px 40px;
+        }
+        .live-chat a {
+          padding: 20px;
+        }
+      }
+      @media only screen and (max-width: 1300px) {
+        .add-to-cart-section {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cart-left {
+          grid-template-columns: 1fr;
+        }
+        .cart-left-all-image {
+          order: 2;
+        }
+        .cart-left-all-image ul {
+          display: flex;
+        }
+        .cart-left-all-image ul li img {
+          width: 100px;
+          padding: 0;
+          margin-bottom: 12px;
+        }
+        .cart-right-selected-img {
+          padding: 50px;
+        }
+        .btn {
+          padding: 20px 40px;
+        }
+        .live-chat a {
+          padding: 20px;
+        }
+        .picZoomer-zoom-wp {
+          display: none !important;
+        }
+        .picZoomCursor-ico {
+          display: none !important;
+        }
+      }
+      @media only screen and (max-width: 991px) {
+        .add-to-cart-section {
+          grid-template-columns: 1fr;
+        }
+        .cart-left {
+          grid-template-columns: 1fr;
+        }
+        .cart-left-all-image {
+          order: 2;
+        }
+        .cart-left-all-image ul {
+          display: flex;
+        }
+        .cart-left-all-image ul li img {
+          width: 50px;
+          padding: 0;
+          margin-bottom: 12px;
+        }
+        .cart-left-all-image img {
+          margin-left: 10px;
+        }
+        .cart-right-selected-img {
+          order: 1;
+          padding: 30px;
+        }
+        .cart-right {
+          background: #fff;
+          padding: 30px;
+          margin-right: 0;
+        }
+        .btn {
+          padding: 15px 30px;
+        }
+        .live-chat a {
+          padding: 10px;
+        }
+        .cart-btn span {
+          padding: 15px 20px;
+        }
+        .cart-right-selected-img p {
+          text-align: left;
+          margin-left: 40px;
+        }
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="src/jquery.picZoomer.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $(".picZoomer").picZoomer();
+
+        //切换图片
+        $(".piclist li").on("click", function (event) {
+          var $pic = $(this).find("img");
+          $(".picZoomer-pic").attr("src", $pic.attr("src"));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="add-to-cart-section">
+      <div class="cart-left">
+        <div class="cart-left-all-image">
+          <ul class="piclist">
+            <li><img src="./img/p1.png" alt="" /></li>
+            <li><img src="./img/p2.png" alt="" /></li>
+          </ul>
+        </div>
+        <div class="cart-right-selected-img">
+          <div class="picZoomer">
+            <img src="./img/p1.png" alt="" />
+          </div>
+          <p>
+            <img
+              src="img/file-alt-regular.svg"
+              class="specification-img"
+              alt=""
+            />
+            Specification
+          </p>
+        </div>
+      </div>
+      <div class="cart-right">
+        <h6 class="extraordinary">extraordinary stability</h6>
+        <h1 class="product-name">Tour Black</h1>
+        <p class="product-details">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+          possimus nemo dolore ullam, unde ad deleniti repudiandae voluptatum
+          architecto ut quisquam eveniet, quam sit sunt blanditiis? Sapiente ex
+          necessitatibus quidem.
+        </p>
+        <div class="product-price">
+          <p><span>$68</span>/dozen</p>
+          <div class="product-review">
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span>(84)</span>
+          </div>
+        </div>
+        <div class="product-quality">
+          <h6>
+            <img src="img/pngaaa.com-82492.png" class="mark-icon" alt="" />
+            Maximum distence
+          </h6>
+          <h6>
+            <img src="img/pngaaa.com-82492.png" class="mark-icon" alt="" />
+            Maximum distence
+          </h6>
+          <h6>
+            <img src="img/pngaaa.com-82492.png" class="mark-icon" alt="" />
+            Maximum distence
+          </h6>
+        </div>
+        <div class="cart-btn">
+          <span>1</span>
+          <a href="#" class="btn">ADD TO CART</a>
+        </div>
+        <p class="arrives">Arrives : Monday, Feb 22</p>
+        <div class="live-chat">
+          <a href="" class="chat-btn"> Custom Order</a>
+          <a href=""> Live Chat</a>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-36251023-1"]);
+      _gaq.push(["_setDomainName", "jqueryscript.net"]);
+      _gaq.push(["_trackPageview"]);
+
+      (function () {
+        var ga = document.createElement("script");
+        ga.type = "text/javascript";
+        ga.async = true;
+        ga.src =
+          ("https:" == document.location.protocol
+            ? "https://ssl"
+            : "http://www") + ".google-analytics.com/ga.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
